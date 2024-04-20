@@ -13,14 +13,26 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
+
+  const sortByMonth = (array) => {
+    const sorted = array.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateA.getMonth() - dateB.getMonth();
+    });
+    return sorted;
+  };
+
+  const datas = sortByMonth(data?.events || []);
+
   const filteredEvents = !type
-    ? data?.events || []
-    : data?.events.filter((event) => {
+    ? datas
+    : datas?.filter((event) => {
         if (type === event.type) {
           return true;
         }
         return false;
-      }) || [];
+      });
 
   // Get current items
   const indexOfLastItem = currentPage * PER_PAGE;
