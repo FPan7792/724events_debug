@@ -39,8 +39,9 @@ const Select = ({
                 </li>
               )}
               {selection.map((s) => (
-                <li key={s} onClick={() => changeValue(s)}>
+                <li key={s}>
                   <input
+                    onClick={() => changeValue(s)}
                     defaultChecked={value === s}
                     name="selected"
                     type="radio"
