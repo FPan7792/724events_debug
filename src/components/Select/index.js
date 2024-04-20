@@ -14,9 +14,9 @@ const Select = ({
   type = "normal",
 }) => {
   const [value, setValue] = useState();
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue);
     setValue(newValue);
     setCollapsed(newValue);
   };
@@ -25,10 +25,12 @@ const Select = ({
       {label && <div className="label">{label}</div>}
       <div className="Select">
         <ul>
-          <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
+          <li
+            className={!collapsed ? "SelectTitle--show" : "SelectTitle--hide"}
+          >
             {value || (!titleEmpty && "Toutes")}
           </li>
-          {!collapsed && (
+          {collapsed && (
             <>
               {!titleEmpty && (
                 <li onClick={() => changeValue(null)}>
@@ -53,7 +55,7 @@ const Select = ({
         <button
           type="button"
           data-testid="collapse-button-testid"
-          className={collapsed ? "open" : "close"}
+          className={collapsed ? "close" : "open"}
           onClick={(e) => {
             e.preventDefault();
             setCollapsed(!collapsed);
@@ -88,7 +90,7 @@ Select.propTypes = {
   titleEmpty: PropTypes.bool,
   label: PropTypes.string,
   type: PropTypes.string,
-}
+};
 
 Select.defaultProps = {
   onChange: () => null,
@@ -96,6 +98,6 @@ Select.defaultProps = {
   label: "",
   type: "normal",
   name: "select",
-}
+};
 
 export default Select;
