@@ -20,9 +20,6 @@ const Slider = () => {
     nextCard();
   });
 
-  console.log("dbb", byDateDesc);
-  // console.log("date", getMonth());
-  console.log("date", new Date("2022-03-29T20:28:45.744Z").getMonth());
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
