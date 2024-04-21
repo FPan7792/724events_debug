@@ -39,7 +39,7 @@ const Select = ({
                 </li>
               )}
               {selection.map((s) => (
-                <li key={s} onClick={() => changeValue(s)}>
+                <li key={s} onClick={() => onChange(s)}>
                   <input
                     defaultChecked={value === s}
                     name="selected"
@@ -59,8 +59,8 @@ const Select = ({
           className={collapsed ? "close" : "open"}
           onClick={(e) => {
             e.preventDefault();
-            setCollapsed(!collapsed);
             onChange(value);
+            setCollapsed(!collapsed);
           }}
         >
           <Arrow />
