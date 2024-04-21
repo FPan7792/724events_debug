@@ -60,6 +60,7 @@ const Select = ({
           onClick={(e) => {
             e.preventDefault();
             setCollapsed(!collapsed);
+            onChange(value);
           }}
         >
           <Arrow />
