@@ -41,10 +41,10 @@ const Select = ({
               {selection.map((s) => (
                 <li key={s} onClick={() => onChange(s)}>
                   <input
-                    defaultChecked={value === s}
                     name="selected"
                     type="radio"
                     checked={value === s}
+                    readOnly
                   />{" "}
                   {s}
                 </li>
