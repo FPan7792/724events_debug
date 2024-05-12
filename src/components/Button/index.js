@@ -24,15 +24,16 @@ const Button = ({ title, onClick, type, disabled, children }) => {
       );
     case BUTTON_TYPES.SUBMIT:
       return (
-        <input
+        <button
           disabled={disabled}
           className="Button"
           type="submit"
           data-testid="button-test-id"
-          value={children}
           onClick={onClick}
           title={title}
-        />
+        >
+          {children}
+        </button>
       );
     default:
       return (
@@ -63,7 +64,7 @@ Button.defaultProps = {
   onClick: () => null,
   type: BUTTON_TYPES.DEFAULT,
   title: "",
-  children: null
-}
+  children: null,
+};
 
 export default Button;
